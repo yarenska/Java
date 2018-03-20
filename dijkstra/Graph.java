@@ -1,8 +1,18 @@
+//Implementing Dijkstra's Algorithm with the utilization of Java Frame and Panel
+
 package dijkstra;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class Graph {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+//Some parts are written between the lines of the actual codes for us to keep track of the current situation.
+
+public class Graph extends JPanel{
 	private ArrayList<Edge> edges = new ArrayList<Edge>();
 	private ArrayList<Node> nodes = new ArrayList<Node>();
 	private ArrayList<Node> unvisiteds = new ArrayList<Node>();
@@ -19,6 +29,16 @@ public class Graph {
 				}
 			}
 		}
+	}
+	
+	public void paint(Graphics g){
+		
+		for(Node n : nodes){
+			g.fillOval(n.getX()-35/2,n.getY()-35/2,35,35);
+		}
+		for(Edge e : edges)
+			g.drawLine(e.getFrom().getX(), e.getFrom().getY(), e.getTo().getX(), e.getTo().getY());
+		
 	}
 	
 	public void DijkstrasAlgorithm(){
@@ -58,11 +78,10 @@ public class Graph {
 					selectedDistance = nodesEdges.get(i).getNeighbour(previous.getName()).getDistanceFromSource();
  					selected = nodesEdges.get(i).getNeighbour(previous.getName());
 				 }
-			    } 
+			   } 
 			
 			//System.out.println(""+selected.getName());
 			number--;
-			
 		}
 	}
 	
@@ -94,12 +113,12 @@ public class Graph {
 		edges.add(new Edge(D,E,1));*/
 		
 		
-		Node A = new Node(1);
-		Node B = new Node(2);
-		Node C = new Node(3);
-		Node D = new Node(4);
-		Node E = new Node(5);
-		Node F = new Node(6);
+		Node A = new Node(1,60,300);
+		Node B = new Node(2,60,60);
+		Node C = new Node(3,140,150);
+		Node D = new Node(4,250,302);
+		Node E = new Node(5,200,50);
+		Node F = new Node(6,400,90);
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		nodes.add(A);
 		nodes.add(B);
@@ -120,6 +139,15 @@ public class Graph {
 		edges.add(new Edge(D,F,1));
 		
 		Graph g = new Graph(edges,nodes);	
+		
+		JFrame myFrame = new JFrame();
+		myFrame.setPreferredSize(new Dimension(600,500));
+		myFrame.setBackground(Color.WHITE);
+		myFrame.getContentPane().add(g);
+		myFrame.pack();
+		myFrame.setResizable(false);
+		myFrame.setVisible(true);
+		
 		g.DijkstrasAlgorithm();
 		g.printShortestDistances();
 	}
