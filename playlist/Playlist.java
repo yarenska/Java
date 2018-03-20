@@ -11,13 +11,14 @@ public class Playlist {
 	
 	private Clip clip;
 	private Queue<File> playlist = new LinkedList<File>();
+	
 	// Add your musics to queue like that: 
 	// private File Track(n) = new File("Name of the music in wav format");
 	
 	private File Track1 = new File("The Cranberries - Dreams.wav");
 	private File Track2 = new File("U2 - Electrical Storm.wav");
 	private File Track3  = new File("Duran Duran - Come Undone.wav");
-	private File Track4  = new File("Sting - Desert Rose.wav");
+	private File Track4  = new File("Sting - Fields of Gold.wav");
 	
 	public Playlist(){
 		playlist.add(Track1);
