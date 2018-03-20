@@ -8,9 +8,12 @@ public class Node {
 	private int distanceFromSource = Integer.MAX_VALUE;
 	private ArrayList<Edge> nodesEdges = new ArrayList<Edge>();
 	private int numberEdges;
+	private int x,y;
 	
-	public Node(int name){
+	public Node(int name, int x, int y){
 		this.name = name;
+		this.x = x;
+		this.y = y;
 		visited = false;
 		}
 	
@@ -46,5 +49,13 @@ public class Node {
 	
 	public int getNumberEdges(){
 		return numberEdges;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
 	}
 }
